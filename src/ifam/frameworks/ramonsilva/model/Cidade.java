@@ -13,7 +13,7 @@ public class Cidade {
     @Column(unique = true,nullable = false)
     private String nome;
     @ManyToOne
-    private  Estado estado;
+    private Estado estado;
 
     public Cidade() {
     }

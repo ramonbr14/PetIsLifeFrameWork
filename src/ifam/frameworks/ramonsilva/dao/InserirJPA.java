@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public class InserirJPA {
 
-    static EntityManager entityInserir = JPAUtil.getEntityManager();
+    public static EntityManager entityInserir = JPAUtil.getEntityManager();
 
     public static void inserirPais(String codigoiso,String nome){
         Pais pais = new Pais();

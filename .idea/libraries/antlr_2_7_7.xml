@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="required">
+  <library name="antlr-2.7.7">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../libs/hibernate-release-5.3.23.Final/lib/required/antlr-2.7.7.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../libs/hibernate-release-5.3.23.Final/lib/required/byte-buddy-1.11.12.jar!/" />
@@ -19,10 +19,8 @@
       <root url="jar://$PROJECT_DIR$/../../libs/hibernate-release-5.3.23.Final/lib/required/jboss-transaction-api_1.2_spec-1.1.1.Final.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../libs/hibernate-release-5.3.23.Final/lib/required/stax-ex-1.8.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../libs/hibernate-release-5.3.23.Final/lib/required/txw2-2.3.1.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../libs/hibernate-release-5.3.23.Final/lib/required" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/../../libs/hibernate-release-5.3.23.Final/lib/required" recursive="false" />
   </library>
 </component>
