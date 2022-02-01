@@ -3,6 +3,7 @@ package ifam.frameworks.ramonsilva;
 import javax.swing.*;
 import java.util.Scanner;
 
+import static ifam.frameworks.ramonsilva.dao.InserirJPA.inserirEstado;
 import static ifam.frameworks.ramonsilva.dao.InserirJPA.inserirPais;
 
 public class Main {
@@ -55,17 +56,30 @@ public class Main {
     }
 
     public static void entradaPais() {
+        Scanner leitura = new Scanner(System.in);
         System.out.println("Codigo ISO: ");
-        Scanner iso = new Scanner(System.in);
-        iso.next();
+        String iso = leitura.nextLine();
         System.out.println("Nome do Pais: ");
-        Scanner nome = new Scanner(System.in);
-        nome.next();
+        String nome = leitura.nextLine();
+
         try {
-            inserirPais(iso.toString(), nome.toString());
+            inserirPais(iso, nome);
         } catch (Exception e) {
             System.out.println("Erro no cadastro do Pais, Ação não Executada");
 
         }
     }
+    public static void entradaEstado() {
+        Scanner leitura = new Scanner(System.in);
+        System.out.println("Codigo IBGE: ");
+        String iso = leitura.nextLine();
+        System.out.println("Nome do Estado: ");
+        String nome = leitura.nextLine();
+
+        try {
+            inserirEstado(iso, nome,); //Falta inserir o parametro estado;
+        } catch (Exception e) {
+            System.out.println("Erro no cadastro do Pais, Ação não Executada");
+
+        }
 }

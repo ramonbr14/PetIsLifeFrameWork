@@ -9,6 +9,8 @@ http://xmlns.jcp.org/xml/ns/persistence ">
     <persistence-unit name="JPApet" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
+        <class>Pais</class>
+
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
 
