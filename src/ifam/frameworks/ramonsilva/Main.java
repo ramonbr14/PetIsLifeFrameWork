@@ -1,8 +1,12 @@
 package ifam.frameworks.ramonsilva;
 
+import ifam.frameworks.ramonsilva.dao.ConsultarJPA;
+import ifam.frameworks.ramonsilva.model.Pais;
+
 import javax.swing.*;
 import java.util.Scanner;
 
+import static ifam.frameworks.ramonsilva.dao.ConsultarJPA.consultarPaisList;
 import static ifam.frameworks.ramonsilva.dao.InserirJPA.inserirEstado;
 import static ifam.frameworks.ramonsilva.dao.InserirJPA.inserirPais;
 
@@ -10,23 +14,23 @@ public class Main {
 
     public static void main(String[] args) {
         execucaoOpcao();
-        Scanner opcao = new Scanner(System.in);
-        chamadaCadastro(opcao.nextInt());
         JOptionPane.showConfirmDialog(null,"ESTAMOS ON LINE");
     }
 
 
     public static void execucaoOpcao(){
-        System.out.println("SEJA BEM VINDO AO PetIsLife/n");
-        System.out.println("Escolha a opção de deseja cadastrar/n/n");
-        System.out.println("1 - Pais/n");
-        System.out.println("2 - Estado/n");
-        System.out.println("3 - Cidade/n");
-        System.out.println("4 - Pessoa/n");
-        System.out.println("5 - Especie/n");
-        System.out.println("6 - Raça/n");
-        System.out.println("7 - Pet/n");
-        System.out.println("0 - Encerrar/n");
+        System.out.println("SEJA BEM VINDO AO PetIsLife \n");
+        System.out.println("Escolha a opção de deseja cadastrar \n\n");
+        System.out.println("1 - Pais");
+        System.out.println("2 - Estado");
+        System.out.println("3 - Cidade");
+        System.out.println("4 - Pessoa");
+        System.out.println("5 - Especie");
+        System.out.println("6 - Raça");
+        System.out.println("7 - Pet");
+        System.out.println("0 - Encerrar");
+        Scanner opcao = new Scanner(System.in);
+        chamadaCadastro(opcao.nextInt());
     }
 
     public static void chamadaCadastro(int n) {
@@ -35,8 +39,10 @@ public class Main {
                 System.out.println("Finalizado!");
             case 1:
                 entradaPais();
+                break;
             case 2:
-                System.out.println("Finalizado!");
+                entradaEstado();
+                break;
             case 3:
                 System.out.println("Finalizado!");
             case 4:
@@ -51,8 +57,9 @@ public class Main {
                 System.out.println("Finalizado!");
             case 9:
                 System.out.println("Finalizado!");
-
-        }
+            default:execucaoOpcao();
+       }
+       execucaoOpcao();
     }
 
     public static void entradaPais() {
@@ -66,20 +73,21 @@ public class Main {
             inserirPais(iso, nome);
         } catch (Exception e) {
             System.out.println("Erro no cadastro do Pais, Ação não Executada");
-
         }
     }
     public static void entradaEstado() {
-        Scanner leitura = new Scanner(System.in);
+        /*Scanner leitura = new Scanner(System.in);
         System.out.println("Codigo IBGE: ");
         String iso = leitura.nextLine();
         System.out.println("Nome do Estado: ");
         String nome = leitura.nextLine();
+        */consultarPaisList();
 
-        try {
-            inserirEstado(iso, nome,); //Falta inserir o parametro estado;
+        /*try {
+            inserirEstado(iso, nome, pais); //Falta inserir o parametro estado;
         } catch (Exception e) {
             System.out.println("Erro no cadastro do Pais, Ação não Executada");
 
-        }
+        }*/
+    }
 }
