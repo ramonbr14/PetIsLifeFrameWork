@@ -16,6 +16,7 @@ public class ConsultarJPA {
         int i=0;
         List<Pais> pais = query.getResultList();
 
+        entityConsultar.close();
         return pais;
     }
 

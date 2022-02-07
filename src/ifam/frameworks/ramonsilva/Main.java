@@ -6,13 +6,11 @@ import ifam.frameworks.ramonsilva.model.Pais;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 import static ifam.frameworks.ramonsilva.dao.ConsultarJPA.*;
 import static ifam.frameworks.ramonsilva.dao.InserirJPA.inserirEstado;
 import static ifam.frameworks.ramonsilva.dao.InserirJPA.inserirPais;
-import static net.bytebuddy.matcher.ElementMatchers.is;
 
 public class Main {
 
@@ -87,11 +85,14 @@ public class Main {
         String isodopais = leitura.nextLine();
         Pais pais = null;
         for(Pais p:paisList){
-            if(p.getCodidoISO()==isodopais){
+            if((p.getCodidoISO()).equals(isodopais)){
                 pais = p;
             }
         }
-
+        if(pais.equals(null)){
+            System.out.println("Pais não selecionado!");
+            execucaoOpcao();
+        }
         System.out.println("Codigo IBGE: ");
         String codibge = leitura.nextLine();
         System.out.println("Nome do Estado: ");
