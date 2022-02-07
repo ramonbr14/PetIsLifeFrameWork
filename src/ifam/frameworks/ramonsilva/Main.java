@@ -63,7 +63,7 @@ public class Main {
        }
        execucaoOpcao();
     }
-
+    //Funções de Entrada
     public static void entradaPais() {
         Scanner leitura = new Scanner(System.in);
         System.out.println("Codigo ISO: ");
@@ -104,5 +104,33 @@ public class Main {
             System.out.println("Erro no cadastro do Estado, Ação não Executada");
 
       }
+    }
+    public static void entradaCidade() {
+        List<Pais> paisList = new ArrayList<Pais>(consultarPaisList());
+        System.out.println("Escolha o  ISO país que deseja cadastra o estado/territorio/Provincia: ");
+        imprimirListaPais(paisList);
+        Scanner leitura = new Scanner(System.in);
+        String isodopais = leitura.nextLine();
+        Pais pais = null;
+        for(Pais p:paisList){
+            if((p.getCodidoISO()).equals(isodopais)){
+                pais = p;
+            }
+        }
+        if(pais.equals(null)){
+            System.out.println("Pais não selecionado!");
+            execucaoOpcao();
+        }
+        System.out.println("Codigo IBGE: ");
+        String codibge = leitura.nextLine();
+        System.out.println("Nome do Estado: ");
+        String nome = leitura.nextLine();
+
+        try {
+            inserirEstado(codibge, nome, pais); //Falta inserir o parametro estado;
+        } catch (Exception e) {
+            System.out.println("Erro no cadastro do Estado, Ação não Executada");
+
+        }
     }
 }

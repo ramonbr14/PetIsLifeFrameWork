@@ -3,13 +3,15 @@ package ifam.frameworks.ramonsilva.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Estado",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"estcdibge","pais_id"})})
 public class Estado {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(unique = true,nullable = false)
+    @Column(name = "estcdibge",nullable = false)
     private String codigoIBGE;
-    @Column(unique = true,nullable = false)
+    @Column(name = "estnome",nullable = false)
     private String nome;
     @ManyToOne
     private Pais pais;

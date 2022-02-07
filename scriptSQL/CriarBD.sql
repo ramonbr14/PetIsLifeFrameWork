@@ -9,8 +9,8 @@ show databases;
 
 show tables;
 
-select * from Pais;
-select * from Estado;
+select * from Pais order by nome;
+select * from Estado order by pais_id;
 select * from Cidade;
 select * from Pessoa;
 select * from Pet;

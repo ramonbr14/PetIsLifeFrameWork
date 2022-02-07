@@ -12,11 +12,12 @@ public class ConsultarJPA {
 
     public static List<Pais> consultarPaisList(){
         entityConsultar.getTransaction().begin();
+        entityConsultar.getTransaction().commit();
         Query query = entityConsultar.createQuery("select p from Pais p");
         int i=0;
         List<Pais> pais = query.getResultList();
 
-        entityConsultar.close();
+        //entityConsultar.close();
         return pais;
     }
 
@@ -28,10 +29,5 @@ public class ConsultarJPA {
             }
         }
         System.out.print("CODIGO ISO: ");
-    }
-
-    public static Pais escolherPais(String isodopais){
-        Pais pais = null;
-        return pais;
     }
 }
