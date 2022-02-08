@@ -1,6 +1,7 @@
 package ifam.frameworks.ramonsilva;
 
 import ifam.frameworks.ramonsilva.dao.ConsultarJPA;
+import ifam.frameworks.ramonsilva.model.Estado;
 import ifam.frameworks.ramonsilva.model.Pais;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import static ifam.frameworks.ramonsilva.dao.ConsultarJPA.*;
+import static ifam.frameworks.ramonsilva.dao.EntradasJPA.*;
 import static ifam.frameworks.ramonsilva.dao.InserirJPA.inserirEstado;
 import static ifam.frameworks.ramonsilva.dao.InserirJPA.inserirPais;
 
@@ -46,7 +48,8 @@ public class Main {
                 entradaEstado();
                 break;
             case 3:
-                System.out.println("Finalizado!");
+                entradaCidade();
+                break;
             case 4:
                 System.out.println("Finalizado!");
             case 5:
@@ -63,74 +66,5 @@ public class Main {
        }
        execucaoOpcao();
     }
-    //Funções de Entrada
-    public static void entradaPais() {
-        Scanner leitura = new Scanner(System.in);
-        System.out.println("Codigo ISO: ");
-        String iso = leitura.nextLine();
-        System.out.println("Nome do Pais: ");
-        String nome = leitura.nextLine();
 
-        try {
-            inserirPais(iso, nome);
-        } catch (Exception e) {
-            System.out.println("Erro no cadastro do Pais, Ação não Executada");
-        }
-    }
-    public static void entradaEstado() {
-        List<Pais> paisList = new ArrayList<Pais>(consultarPaisList());
-        System.out.println("Escolha o  ISO país que deseja cadastra o estado/territorio/Provincia: ");
-        imprimirListaPais(paisList);
-        Scanner leitura = new Scanner(System.in);
-        String isodopais = leitura.nextLine();
-        Pais pais = null;
-        for(Pais p:paisList){
-            if((p.getCodidoISO()).equals(isodopais)){
-                pais = p;
-            }
-        }
-        if(pais.equals(null)){
-            System.out.println("Pais não selecionado!");
-            execucaoOpcao();
-        }
-        System.out.println("Codigo IBGE: ");
-        String codibge = leitura.nextLine();
-        System.out.println("Nome do Estado: ");
-        String nome = leitura.nextLine();
-
-        try {
-            inserirEstado(codibge, nome, pais); //Falta inserir o parametro estado;
-        } catch (Exception e) {
-            System.out.println("Erro no cadastro do Estado, Ação não Executada");
-
-      }
-    }
-    public static void entradaCidade() {
-        List<Pais> paisList = new ArrayList<Pais>(consultarPaisList());
-        System.out.println("Escolha o  ISO país que deseja cadastra o estado/territorio/Provincia: ");
-        imprimirListaPais(paisList);
-        Scanner leitura = new Scanner(System.in);
-        String isodopais = leitura.nextLine();
-        Pais pais = null;
-        for(Pais p:paisList){
-            if((p.getCodidoISO()).equals(isodopais)){
-                pais = p;
-            }
-        }
-        if(pais.equals(null)){
-            System.out.println("Pais não selecionado!");
-            execucaoOpcao();
-        }
-        System.out.println("Codigo IBGE: ");
-        String codibge = leitura.nextLine();
-        System.out.println("Nome do Estado: ");
-        String nome = leitura.nextLine();
-
-        try {
-            inserirEstado(codibge, nome, pais); //Falta inserir o parametro estado;
-        } catch (Exception e) {
-            System.out.println("Erro no cadastro do Estado, Ação não Executada");
-
-        }
-    }
 }

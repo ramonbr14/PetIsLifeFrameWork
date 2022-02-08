@@ -6,11 +6,11 @@ import javax.persistence.*;
 public class Cidade {
     @Id
     @GeneratedValue
+    @Column(name = "cidcodigo")
     private Integer id;
-
-    @Column(unique = true,nullable = false)
+    @Column(name = "cidibge",unique = true,nullable = false)
     private String codigoIBGE;
-    @Column(unique = true,nullable = false)
+    @Column(name = "cidnome",nullable = false)
     private String nome;
     @ManyToOne
     private Estado estado;
