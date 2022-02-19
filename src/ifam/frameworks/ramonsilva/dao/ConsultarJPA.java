@@ -58,8 +58,13 @@ public class ConsultarJPA {
         entityConsultar.getTransaction().begin();
         entityConsultar.getTransaction().commit();
         int cd = pais.getId();
-        Query query = entityConsultar.createQuery("select e from Estado e");//INSERIR O FILTRO DO PAIS AQUI
+        Query query = entityConsultar.createQuery("select e from Estado e where e.pais.id ="+ cd);//INSERIR O FILTRO DO PAIS AQUI
         List<Estado> estado = query.getResultList();
+
+        /*String hql = "from Produto where preco > :preco";
+  Query query = session.createQuery(hql);
+  query.setDouble("preco",25.0);
+  List results = query.list();*/
 
         //entityConsultar.close();
         return estado;
