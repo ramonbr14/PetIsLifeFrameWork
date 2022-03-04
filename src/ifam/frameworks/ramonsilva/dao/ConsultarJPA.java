@@ -1,5 +1,6 @@
 package ifam.frameworks.ramonsilva.dao;
 
+import ifam.frameworks.ramonsilva.model.Cidade;
 import ifam.frameworks.ramonsilva.model.Estado;
 import ifam.frameworks.ramonsilva.model.Pais;
 import ifam.frameworks.ramonsilva.util.JPAUtil;
@@ -61,13 +62,19 @@ public class ConsultarJPA {
         Query query = entityConsultar.createQuery("select e from Estado e where e.pais.id ="+ cd);//INSERIR O FILTRO DO PAIS AQUI
         List<Estado> estado = query.getResultList();
 
-        /*String hql = "from Produto where preco > :preco";
-  Query query = session.createQuery(hql);
-  query.setDouble("preco",25.0);
-  List results = query.list();*/
-
         //entityConsultar.close();
         return estado;
+    }
+
+    public static List<Cidade> consultarCidadeList(Estado estado) {
+        entityConsultar.getTransaction().begin();
+        entityConsultar.getTransaction().commit();
+        int cd = estado.getId();
+        Query query = entityConsultar.createQuery("select c from Cidade c where c.estado.id ="+ cd);
+        List<Cidade> cidade = query.getResultList();
+
+        //entityConsultar.close();
+        return cidade;
     }
 
     public static void imprimirListaEstado(List<Estado> lista) {
@@ -90,6 +97,35 @@ public class ConsultarJPA {
         for (Estado e : estadoList) {
             if (e.getCodigoIBGE().equals(codigoibge)) {
                 estado = e;
+            }
+        }
+        if (estado.equals(null)) {
+            System.out.println("Estado não selecionado!");
+            execucaoOpcao();
+        }
+        return estado;
+    }
+
+    public static void imprimirListaCidade(List<Cidade> lista) {
+        for (Cidade c : lista) {
+            System.out.print(c.getCodigoIBGE() + " - " + c.getNome() + " | ");
+            if (c.getId() % 4 == 0) {
+                System.out.println("");
+            }
+        }
+        System.out.println("CODIGO IBGE: ");
+    }
+
+    public static Cidade selecionaCidade(Estado estado) {
+        List<Cidade> cidadeList = new ArrayList<Cidade>(consultarCidadeList(estado));
+        System.out.println("Escolha o codigo da cidade: ");
+        imprimirListaCidade(cidadeList);
+        Scanner leitura = new Scanner(System.in);
+        String codigoibge = leitura.nextLine();
+        Cidade cidade = null;
+        for (Cidade c : cidadeList) {
+            if (c.getCodigoIBGE().equals(codigoibge)) {
+                cidade = c;
             }
         }
         if (estado.equals(null)) {

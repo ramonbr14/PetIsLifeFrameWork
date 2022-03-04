@@ -51,7 +51,34 @@ public class EntradasJPA {
         String nome = leitura.nextLine();
 
         try {
-            inserirCidade(codibge, nome, estado); //Falta inserir o parametro estado;
+            inserirCidade(codibge, nome, estado);
+        } catch (Exception e) {
+            System.out.println("Erro no cadastro da Cidade, Ação não Executada");
+
+        }
+    }
+    public static void entradaPessoa() {
+        Scanner leitura = new Scanner(System.in);
+        System.out.print("INSIRA O CPF: ");
+        String cpf = leitura.nextLine();
+        System.out.print("NOME: ");
+        String nome = leitura.nextLine();
+        System.out.print("EMAIL: ");
+        String email = leitura.nextLine();
+        System.out.println("TELEFONE: ");
+        String telefone = leitura.nextLine();
+        System.out.println("DATA DE NASCIMENTO(DD-MM-AAAA): ");
+        String dtn = leitura.nextLine();
+        System.out.println("MASCULINO OU FEMININO: ");
+        String sexo = leitura.nextLine();
+        System.out.println("CUIDADOR OU PROPRIETARIO");
+        String tipopessoa = leitura.nextLine();
+
+
+
+
+        try {
+            inserirCidade(codibge, nome, estado);
         } catch (Exception e) {
             System.out.println("Erro no cadastro da Cidade, Ação não Executada");
 

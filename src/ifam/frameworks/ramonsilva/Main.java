@@ -51,7 +51,7 @@ public class Main {
                 entradaCidade();
                 break;
             case 4:
-                System.out.println("Finalizado!");
+                entradaPessoa();
             case 5:
                 System.out.println("Finalizado!");
             case 6:

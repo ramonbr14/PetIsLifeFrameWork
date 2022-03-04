@@ -11,6 +11,7 @@ show tables;
 
 select * from Pais order by nome;
 select * from Estado order by pais_id;
+
 select * from Cidade;
 select * from Pessoa;
 select * from Pet;
